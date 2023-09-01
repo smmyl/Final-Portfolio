@@ -1,23 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState, useEffect} from 'react'
+import axios from 'axios'
+import Home from './components/Home'
+import Project from './components/Project'
+import Skill from './components/Skill'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
+import NavBar from './components/NavBar'
+import About from './components/About'
 
-function App() {
+const App = () => {
+  const [mode, setMode] = useState(true)
+
+  const toggleMode = () => {
+    setMode(!mode)
+  }
+
+  useEffect(() => {
+
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div class={mode ? ('body'):('bodyd')}>
+      <Home
+        mode={mode}
+        toggleMode={toggleMode}
+      />
+      <NavBar/>
+      <Project
+        mode={mode}
+      />
+      <Skill
+        mode={mode}
+      />
+      <About/>
+      <Contact
+        mode={mode}
+      />
+      <Footer
+        mode={mode}
+      />
     </div>
   );
 }
